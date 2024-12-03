@@ -6,7 +6,7 @@
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>oqueaplicativo</title>
+        <title>CHAT V3</title>
 
         <!-- Importa o arquivo CSS: -->
         <link rel="stylesheet" href="styles.css">
@@ -22,7 +22,7 @@
 
         <div class="container">
         
-            <h1>********** APP DE CHAT COM MONGODB **********</h1>
+            <h1> ******* APP DE CHAT COM MONGODB *******</h1>
 
             <form id="chat">
 
@@ -39,11 +39,11 @@
 
         </div>
 
-        <script src="/socket.io/socket.io.js"></script>
+        <!-- <script src="/socket.io/socket.io.js"></script> -->
 
         <script>
 
-            /* Conecta o docketIO da aplicação web frontend com o socketIO da aplicação backend nodeJS: */
+            /* Conecta o socketIO da aplicação web frontend com o socketIO da aplicação backend nodeJS: */
             const socket = io('http://localhost:3000');
 
             /* Funçao que formata o HTML para exbir as mensagens enviadas na tela (manipula o div de class messages - linha 26): */
@@ -62,7 +62,7 @@
             });
 
             /* 
-                Recebe as mensagens emitidas pela ação bradcast da aplicação backend e rederiza essas na tela - Conversa diretamente com o método socket.broadcast.emit('receivedMessage', data), linha 60 do backend:
+                Recebe as mensagens emitidas pela ação broadcast da aplicação backend e rederiza essas na tela - Conversa diretamente com o método socket.broadcast.emit('receivedMessage', data), linha 60 do backend:
             */
             socket.on('receivedMessage', function(message) {
                 renderMessage(message);
@@ -74,11 +74,11 @@
                 event.preventDefault();
 
                 /* Recupera os valores dos campos do formulário: */
-                var author = $('input[name=username]').val();
+                var usuario = $('input[name=username]').val();
                 var message = $('input[name=message]').val();
 
                 /* Verfica se o usuário preencheu todos os campos: */
-                if (author.length && message.length) {
+                if (usuario.length && message.length) {
 
                     /* Cria um objeto javascript para recuperar a data e a hora do envio da mensagem: */
                     let data_hora_obj = new Date();
@@ -89,7 +89,7 @@
 
                     /* Monta o objeto JSON para enviar a mensagem: */
                     var messageObject = {
-                        author: author,
+                        usuario: usuario,
                         data_hora:data_hora_msg,
                         message: message,
                     };
